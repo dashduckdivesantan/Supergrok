@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>SUPERGROKCTO</title>
+    <style>
+      body {
+        background-color: #000;
+        color: #0ff;
+        font-family: "Courier New", monospace;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        overflow: hidden;
+        text-align: center;
+      }
+
+      h1 {
+        font-size: 3rem;
+        margin-bottom: 2rem;
+      }
+
+      .tagline {
+        width: 70%;
+        max-width: 800px;
+        white-space: pre-line;
+        font-size: 1rem;
+        border-right: 2px solid #0ff;
+        overflow: hidden;
+        animation: typing 6s steps(80, end), blink 0.75s step-end infinite;
+      }
+
+      @keyframes typing {
+        from {
+          width: 0;
+        }
+        to {
+          width: 100%;
+        }
+      }
+
+      @keyframes blink {
+        50% {
+          border-color: transparent;
+        }
+      }
+
+      a.enter-button {
+        display: inline-block;
+        margin-top: 2rem;
+        padding: 1rem 2rem;
+        font-size: 1.2rem;
+        color: #000;
+        background: #0ff;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+          box-shadow: 0 0 5px #0ff;
+        }
+        50% {
+          transform: scale(1.05);
+          box-shadow: 0 0 20px #0ff;
+        }
+        100% {
+          transform: scale(1);
+          box-shadow: 0 0 5px #0ff;
+        }
+      }
+
+      .sound-toggle {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: transparent;
+        border: 2px solid #0ff;
+        color: #0ff;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        border-radius: 4px;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        z-index: 1000;
+      }
+
+      .sound-toggle:hover {
+        background: #0ff;
+        color: #000;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>SUPERGROKCTO</h1>
+
+    <div class="tagline" id="tagline">
+      GROK PULLED OFF A CRAZY $200M RUN ON ERC20 BY TAPPING INTO THE EARLY AI
+      HYPE AND THE WHOLE ELON CONNECTION. NOW, WITH COMMUNITY TAKING OVER,
+      SUPERGROK’S GOT A REAL SHOT AT GOING EVEN BIGGER.
+    </div>
+
+    <a href="home.html" class="enter-button">ENTER</a>
+
+    <!-- Audio -->
+    <audio id="bg-music" autoplay loop muted>
+      <source src="audio/robot.mp3" type="audio/mpeg" />
+    </audio>
+
+    <!-- Toggle button -->
+    <button onclick="toggleSound()" class="sound-toggle">🔊 Sound</button>
+
+    <script>
+      const audio = document.getElementById("bg-music");
+
+      function toggleSound() {
+        audio.muted = !audio.muted;
+        if (!audio.paused) {
+          audio.play();
+        }
+      }
+
+      // Restart audio after interaction (some browsers block autoplay)
+      document.body.addEventListener("click", () => {
+        if (audio.muted === false && audio.paused) {
+          audio.play();
+        }
+      });
+    </script>
+  </body>
+</html>
